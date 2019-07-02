@@ -62,7 +62,8 @@ public class MyTextView extends android.support.v7.widget.AppCompatTextView {
             case MotionEvent.ACTION_MOVE:
                 float dx = x - mLastX;
                 float dy = y - mLastY;
-                mScroller.startScroll(0, mScroller.getFinalY(), 0, (int) dy);//mCurrY = oldScrollY + dy*scale;
+
+                mScroller.startScroll(0, mScroller.getFinalY(), 0, (int) dy);
                 invalidate();
                 break;
             case MotionEvent.ACTION_UP:
