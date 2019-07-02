@@ -46,6 +46,7 @@ public class MyTextView extends android.support.v7.widget.AppCompatTextView {
 
     private float mLastX;
     private float mLastY;
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float y = event.getY();
@@ -70,7 +71,7 @@ public class MyTextView extends android.support.v7.widget.AppCompatTextView {
                 System.out.println("else: " + initialVelocity + " -- " + mMinimumVelocity);
                 if ((Math.abs(initialVelocity) > mMinimumVelocity)) {
                     fling(initialVelocity);
-                }else if (mScroller.springBack(0, (int) getTranslationY(), 0, 0, top - getTop(),
+                } else if (mScroller.springBack(0, (int) getTranslationY(), 0, 0, top - getTop(),
                         bottom - getBottom())) {
                     postInvalidateOnAnimation();
                 }
@@ -88,11 +89,10 @@ public class MyTextView extends android.support.v7.widget.AppCompatTextView {
         System.out.println(top + "--" + bottom + " -- " + getTranslationY() + "--" + (top - getTop()) + "--" + (bottom - getBottom()));
         int minY = top - getTop();//实际上滑允许滚动的范围 = minY - overY
         int maxY = bottom - getBottom();//实际下滑允许滚动的范围 = maxY + overY
-        mScroller.fling(0, (int) getTranslationY(), 0, velocityY, 0, 0, minY,
-                maxY, 0, 100);
-
+        mScroller.fling(0, (int) getTranslationY(), 0, velocityY, 0, 0, minY, maxY, 0, 100);
         postInvalidateOnAnimation();
     }
+
     private void recycleVelocityTracker() {
         if (mVelocityTracker != null) {
             mVelocityTracker.recycle();
