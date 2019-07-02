@@ -88,8 +88,8 @@ public class MyTextView extends android.support.v7.widget.AppCompatTextView {
         System.out.println(top + "--" + bottom + " -- " + getTranslationY() + "--" + (top - getTop()) + "--" + (bottom - getBottom()));
         int minY = top - getTop();//上滑允许滑动的范围 = minY - overY
         int maxY = bottom - getBottom();//下滑允许滑动的范围 = maxY + overY
-        mScroller.fling(0, (int) getTranslationY(), 0, velocityY, 0, 0, top - getTop(),
-                bottom - getBottom(), 0, 20);
+        mScroller.fling(0, (int) getTranslationY(), 0, velocityY, 0, 0, minY,
+                maxY, 0, 20);
 
         postInvalidateOnAnimation();
     }
